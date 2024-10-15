@@ -25,7 +25,7 @@ export const registerUserCtrl = asyncHandler( async (req,res) =>{
     })
     res.status(201).json({
         status:'success',
-        mrssage:'User Registered Sucessfully',
+        mrssage: `User ${user.email} Registered Sucessfully`,
         data: user,
     })
     });
