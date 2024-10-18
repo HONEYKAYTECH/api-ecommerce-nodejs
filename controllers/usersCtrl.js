@@ -2,6 +2,8 @@ import User from "../model/User.js";
 import bcrypt from 'bcryptjs';
 import asyncHandler from 'express-async-handler';
 import generateToken from "../utils/generateToken.js";
+import { getTokenFromHeader } from "../utils/getTokenFromHeader.js";
+import { verifyToken } from "../utils/verifyToken.js";
 // import generateToken from "../utils/generateToken.js";
 
 
@@ -57,6 +59,10 @@ export const loginUserCtrl = asyncHandler(async (req, res) =>{
 //@route GET api/v1/users/profile
 //@acess Private
 export const getUserProfileCtrl = asyncHandler(async (req, res) =>{
+   const token = getTokenFromHeader(req)
+   //verifyToken
+   const verified = verifyToken(token)
+   console.log(req)
   res.json({
     msg: "welcome to profile page",
   });

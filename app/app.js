@@ -17,7 +17,7 @@ app.use(express.json());
 app.use('/api/v1/users/',userRoutes);
 
 //err handler
-app.use(notFound);
+// app.use(notFound);
 app.use(globalErrhandler);
 
 
