@@ -23,7 +23,7 @@ const ProductSchema = new Schema(
            required: true,
         },
         Sizes: {
-            type: [string],
+            type: [String],
             enum: ["S", "M", "L" , "XL", "XXL" ],
             required: true,
         },
@@ -55,13 +55,23 @@ const ProductSchema = new Schema(
         price: {
             type: Number,
             required: true,
-            default: 0,
-        },    
+        }, 
+        
+        totalQty: {
+            type: Number,
+            required: true,
+        },
+
+        totalSold: {
+            type: Number,
+            required: true,
+            default: 0
+        },
     },
     {
         timestamps: true,
         toJSON: { virtuals: true },
-    }
+    },
 );
 
 const Product = mongoose.model("Product", ProductSchema);
