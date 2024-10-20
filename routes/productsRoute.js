@@ -1,5 +1,5 @@
 import express from "express";
-import { createProductCtrl } from "../controllers/productsCtrl.js";
+import { createProductCtrl, getProductsCtrl } from "../controllers/productsCtrl.js";
 import { isLoggedIn } from "../middlewares/isLoggedIn.js";
 
 
@@ -7,6 +7,7 @@ const productRoutes = express.Router();
 
 
 productRoutes.post("/",isLoggedIn,createProductCtrl )
+productRoutes.get("/",getProductsCtrl )
 
 
 

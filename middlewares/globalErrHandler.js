@@ -12,4 +12,9 @@ export const globalErrhandler = (err, req,res,next) =>{
     });
 
 
-}
+};
+     //404 Handler
+     export const notFound = (req, res, next) =>{
+        const err = new Error(`Route ${req.originalurl} not Found`)
+        next(err)
+     };

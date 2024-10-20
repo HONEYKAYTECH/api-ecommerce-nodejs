@@ -32,7 +32,7 @@ const ProductSchema = new Schema(
             required: true,
         },
 
-        User: {
+        user: {
             type: mongoose.Schema.Types.ObjectId,
             required: true,
             ref: "User",
