@@ -140,3 +140,41 @@ export const singleProductCtrl = asyncHandler(async(req, res) =>{
         singleProduct,
      })
 });
+
+//@des Update Product
+//@route PUT /api/ products/:id/update
+//@access Private/Admin
+
+export const updateProductCtrl = asyncHandler(async(req, res) =>{
+    const { name, description, category, sizes, colors, user, price, totalQty, brand } = req.body;
+    
+    //UPDATE
+    const product = await Product.findByIdAndUpdate(req.params.id, {
+        name, description, category, sizes, colors, user, price, totalQty, brand,  
+    },
+    {
+       new: true,
+    }
+);
+res.json({
+    status: "Success",
+    message: "Products Updated Successfully",
+   product,
+ })
+});
+
+
+
+//@des Delete Product
+//@route DELETE /api/ products/:id/delete
+//@access Private/Admin
+
+export const deleteProductCtrl = asyncHandler(async(req, res) =>{
+    
+     await Product.findByIdAndDelete(req.params.id);
+res.json({
+    status: "Success",
+    message: "Products Deleted Successfully",
+ })
+});
+
