@@ -15,8 +15,7 @@ export const createProductCtrl = asyncHandler(async (req, res) =>{
     const productExists = await Product.findOne({ name });
     if (productExists) { 
         throw new Error("Product Already Exists");
-    }
-
+    } 
     //Find the category
     const categoryFound = await Category.findOne({
         name: category,

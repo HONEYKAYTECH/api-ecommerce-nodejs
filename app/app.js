@@ -6,6 +6,7 @@ import userRoutes from "../routes/userRoute.js";
 import { globalErrhandler } from "../middlewares/globalErrHandler.js";
 import productsRoutes from "../routes/productsRoute.js";
 import categoryRoutes from "../routes/categoryRoute.js";
+import brandRoutes from "../routes/brandRoute.js";
 
 
 
@@ -22,7 +23,8 @@ app.use(express.json());
 //routes
 app.use('/api/v1/users/',userRoutes);
 app.use('/api/v1/products/',productsRoutes);
-app.use('/api/v1/category/',categoryRoutes);
+app.use('/api/v1/products/',categoryRoutes);
+app.use('/api/v1/brand/',brandRoutes);
 
 //err handler
 // app.use(notFound);
