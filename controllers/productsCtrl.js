@@ -2,6 +2,7 @@ import asyncHandler from 'express-async-handler';
 import Product from '../model/Product.js';
 import Category from '../model/Category.js';
 import Brand from '../model/Brand.js';
+import { populate } from 'dotenv';
 
 
 
@@ -139,9 +140,7 @@ export const getProductsCtrl = asyncHandler(async(req,res) =>{
         };
     }
     //Await the query
-    const products = await productQuery;
-    
-   
+    const products = await productQuery.populate('reviews');
     res.json({
         status: "Success",
         total,
@@ -157,7 +156,7 @@ export const getProductsCtrl = asyncHandler(async(req,res) =>{
 // @access Public
 
 export const singleProductCtrl = asyncHandler(async(req, res) =>{
-    const singleProduct = await Product.findById(req.params.id);
+    const singleProduct = await Product.findById(req.params.id).populate("reviews");
      if (!singleProduct) {
         throw new Error("SingleProduct Not Found")
      }
