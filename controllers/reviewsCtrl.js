@@ -2,6 +2,7 @@
 import asyncHandler from 'express-async-handler';
 import Review from '../model/Review.js';
 import Product from '../model/Product.js';
+// import Product from '../model/Product.js';
 
 
 
@@ -12,8 +13,10 @@ import Product from '../model/Product.js';
 export const createReviewCtrl = asyncHandler(async(req, res) => {
     const { product, message, rating } = req.body;
     // 1. Find the Product 
-    const { productID } = req.params;
-    const productFound = await Product.findById(productID).populate("reviews");
+   
+    const productFound = await Product.findById(req.params.id).populate("reviews")
+   
+    
     if(!productFound){
         throw new Error ("Product not found")
     }

@@ -153,7 +153,7 @@ export const getProductsCtrl = asyncHandler(async(req,res) =>{
 
 // @desc Get Single product
 // @route GET /api/products/:id
-// @access Public
+// @access Public.
 
 export const singleProductCtrl = asyncHandler(async(req, res) =>{
     const singleProduct = await Product.findById(req.params.id).populate("reviews");

@@ -9,6 +9,7 @@ import categoryRoutes from "../routes/categoryRoute.js";
 import brandRoutes from "../routes/brandRoute.js";
 import colorRoutes from "../routes/colorRoute.js";
 import reviewRoutes from "../routes/reviewRoute.js";
+import orderRoutes from "../routes/ordersRoute.js";
 
 
 
@@ -29,6 +30,7 @@ app.use('/api/v1/products/',categoryRoutes);
 app.use('/api/v1/brand/',brandRoutes);
 app.use('/api/v1/color/',colorRoutes);
 app.use('/api/v1/review/',reviewRoutes);
+app.use('/api/v1/orders/',orderRoutes);
 
 //err handler
 // app.use(notFound);

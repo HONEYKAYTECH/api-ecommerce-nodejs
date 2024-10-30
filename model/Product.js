@@ -90,7 +90,8 @@ ProductSchema.virtual("averageRating").get(function(){
     });
     //Calculate Average rating
     const averageRating = ratingsTotal / product?.reviews?.length;
-    console.log(averageRating);
+    
+    return averageRating;
     
 })
 const Product = mongoose.model("Product", ProductSchema);
