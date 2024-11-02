@@ -26,7 +26,7 @@ app.use(express.json());
 //routes
 app.use('/api/v1/users/',userRoutes);
 app.use('/api/v1/products/',productsRoutes);
-app.use('/api/v1/products/',categoryRoutes);
+app.use('/api/v1/category/',categoryRoutes);
 app.use('/api/v1/brand/',brandRoutes);
 app.use('/api/v1/color/',colorRoutes);
 app.use('/api/v1/review/',reviewRoutes);
