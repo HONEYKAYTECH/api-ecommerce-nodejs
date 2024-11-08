@@ -19,7 +19,7 @@ const OrderSchema = new Schema({
         type: Object,
         required: true,
     },
-    orederNumber: {
+    orderNumber: {
         type: String,
         default: randomTxt + randomNumbers,
     },

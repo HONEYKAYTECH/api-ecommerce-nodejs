@@ -68,21 +68,20 @@ const product = products?.find((product) =>{
             unit_amount: item?.price * 100
         },
         quantity: item?.qty,
-      }
-   })
+      };
+   });
    const session = await stripe.checkout.sessions.create({
     line_items: convertedOrders,
-    mode: 'payment',
+    metadata: {
+      orderId: JSON.stringify(order?._id),
+    },
+    mode: "payment",
     success_url:'http://localhost:3000/success',
     cancel_url:'http://localhost:3000/cancel',
    });
    res.send({url: session.url });
-   //Payment webhook
-   //Update the user order
-//    res.json({
-//     success:true,
-//     message:"Order Created",
-//     order,
-//     user,
-//    })
-});
+   });
+
+   //@desc get all orders
+//@route GET /api/v1/orders
+//@access Private
