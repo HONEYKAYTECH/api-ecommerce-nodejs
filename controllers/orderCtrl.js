@@ -85,3 +85,54 @@ const product = products?.find((product) =>{
    //@desc get all orders
 //@route GET /api/v1/orders
 //@access Private
+
+export const getAllOrdersCtrl = asyncHandler(async(req, res) =>{
+   //Find all orders
+   const orders = await Order.find();
+   res.json({
+      success: true,
+      message: "All orders",
+      orders,
+   })
+});
+
+//@desc get single order
+//@route GET /api/v1/orders/:id
+//@access Private/Admin
+
+export const getSingleOrderCtrl = asyncHandler(async(req, res)=>{
+   //get the id from params
+   const id = req.params.id;
+   const order = await Order.findById(req.params.id);
+   //send response
+   res.status(200).json({
+      success: true,
+      message: "Single order",
+      order,
+   });
+});
+
+
+
+//@desc Update order to delivered
+//@route PUT /api/v1/orders/update/:id
+//@access Private/Admin
+
+export const updateOrderCtrl = asyncHandler(async(req, res) =>{
+  //get the id from params
+  const id = req.params.id;
+  //Update
+  const updatedOrder = await Order.findByIdAndUpdate(id,{
+   status: req.body.status,
+  },
+  {
+    new: true,
+  }
+);
+//send response
+res.status(200).json({
+   success: true,
+   message: "Update order",
+   updatedOrder,
+});
+});
