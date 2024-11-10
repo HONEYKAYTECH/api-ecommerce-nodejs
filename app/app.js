@@ -12,6 +12,7 @@ import colorRoutes from "../routes/colorRoute.js";
 import reviewRoutes from "../routes/reviewRoute.js";
 import orderRoutes from "../routes/ordersRoute.js";
 import Order from "../model/Order.js";
+import couponRoutes from "../routes/couponsRoute.js";
 
 
 
@@ -95,7 +96,7 @@ app.use('/api/v1/category/',categoryRoutes);
 app.use('/api/v1/brand/',brandRoutes);
 app.use('/api/v1/color/',colorRoutes);
 app.use('/api/v1/review/',reviewRoutes);
-app.use('/api/v1/orders/',orderRoutes);
+app.use('/api/v1/coupons/',couponRoutes);
 
 
 //err handler
