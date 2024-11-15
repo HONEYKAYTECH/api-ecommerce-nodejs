@@ -1,6 +1,7 @@
 import express from "express";
 import { createProductCtrl, deleteProductCtrl, getProductsCtrl, singleProductCtrl, updateProductCtrl } from "../controllers/productsCtrl.js";
 import { isLoggedIn } from "../middlewares/isLoggedIn.js";
+import upload from "../config/fileUpload.js";
 
 
 const productRoutes = express.Router();

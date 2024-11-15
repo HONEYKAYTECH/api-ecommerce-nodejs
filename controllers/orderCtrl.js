@@ -5,6 +5,9 @@ dotenv.config();
 import Stripe from "stripe";
 import User from "../model/User.js";
 import Product from "../model/Product.js";
+import Coupon from "../model/Coupon.js";
+
+
 
 //@desc create orders
 //@route POST /api/v1/s
@@ -14,11 +17,23 @@ import Product from "../model/Product.js";
 const stripe =  new Stripe(process.env.STRIPE_KEY);
 
 
-export const createOrderCtrl = asyncHandler(async(req,res) =>{
+export const createOrderCtrl = asyncHandler(async(req,res)=>{
+   //Get the coupon
+   const { coupon } = req?.query;
+   const couponFound = await Coupon.findOne({
+      code: coupon?.toUpperCase(),
+   });
+   if(couponFound?.isExpired){
+      throw new Error("Coupon has expired")
+   }
+   if(!couponFound){
+      throw new Error("Coupon does not exists")
+   }
+
+   //Get discount
+   const discount = couponFound?.discount / 100;
     //Get the payload(customer, orderItems, shippingAddress,totalPrice);
     const {orderItems , shippingAddress, totalPrice} = req.body;
-    
-    
    //Find the user
    const user = await User.findById(req.userAuthId)
    //Check if user has shipping address
@@ -35,10 +50,9 @@ export const createOrderCtrl = asyncHandler(async(req,res) =>{
     user: user?._id,
     orderItems,
     shippingAddress,
-    totalPrice,
+    totalPrice: couponFound ? totalPrice - totalPrice * discount : totalPrice,
    });
-   
-   
+   console.log(order);
    //Update the product qty
    const products = await Product.find({_id:{$in:orderItems}});
    orderItems?.map(async(order) =>{

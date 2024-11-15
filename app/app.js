@@ -96,6 +96,7 @@ app.use('/api/v1/category/',categoryRoutes);
 app.use('/api/v1/brand/',brandRoutes);
 app.use('/api/v1/color/',colorRoutes);
 app.use('/api/v1/review/',reviewRoutes);
+app.use('/api/v1/orders/',orderRoutes);
 app.use('/api/v1/coupons/',couponRoutes);
 
 
