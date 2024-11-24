@@ -15,7 +15,7 @@ const storage = new CloudinaryStorage({
     cloudinary,
     allowedFormats: ["jpg", "png", "jpeg"],
     params:{
-        folder: "Ecommerce-api",
+        folder: "honeykaytech-ecommerce",
     },
 });
 
@@ -23,6 +23,5 @@ const storage = new CloudinaryStorage({
 const upload = multer({
   storage,  
 });
-
 
 export default upload

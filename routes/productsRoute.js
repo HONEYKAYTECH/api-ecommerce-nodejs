@@ -7,7 +7,7 @@ import upload from "../config/fileUpload.js";
 const productRoutes = express.Router();
 
 
-productRoutes.post("/",isLoggedIn,createProductCtrl )
+productRoutes.post("/",isLoggedIn,upload.array("files"),createProductCtrl )
 productRoutes.get("/",getProductsCtrl )
 productRoutes.get("/:id",singleProductCtrl)
 productRoutes.put("/:id",isLoggedIn,updateProductCtrl)
