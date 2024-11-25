@@ -11,5 +11,5 @@ const isAdmin = async(req, res, next)=>{
   }
 };
 
-export default isAdmin;
+export default isAdmin
 
